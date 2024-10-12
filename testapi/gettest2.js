@@ -1,3 +1,4 @@
+AIzaSyASIIlW8p7c5jbicPRyqBhCLh7NOECeBH8
 const books = document.querySelector(".books");
 
 const apiUrl = "https://goodreads12.p.rapidapi.com";
