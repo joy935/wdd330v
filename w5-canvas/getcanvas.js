@@ -45,8 +45,8 @@ function drawTriangle() {
 }
 
 function drawSmiley() {
-    if (mycanvas4.getContext) {
-        const ctx = mycanvas4.getContext('2d');
+    if (canvas4.getContext) {
+        const ctx = canvas4.getContext('2d');
 
         ctx.beginPath();
         ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
@@ -250,6 +250,62 @@ function drawPath2D() {
       }
 }
 
+function drawSmiley2() {
+    const canvas = document.getElementById('canvas12');
+    if (canvas.getContext) {
+        const ctx = canvas.getContext('2d');
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+        ctx.beginPath();
+        ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+        ctx.moveTo(110, 75);
+        ctx.arc(75, 75, 35, 0, Math.PI, false);  // Mouth (clockwise)
+        ctx.moveTo(65, 65);
+        ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+        ctx.moveTo(95, 65);
+        ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+        ctx.stroke();
+    }
+}
+
+function drawFrawney() {
+    const canvas = document.getElementById('canvas12');
+    if (canvas.getContext) {
+        const ctx = canvas.getContext('2d');
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+        ctx.beginPath();
+        ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+
+        ctx.moveTo(105, 110);  // Move to the right corner of the mouth
+        ctx.arc(75, 110, 30, 0, Math.PI, true);  // Reduced radius to 30 and moved to y = 110
+
+        // Left eye
+        ctx.moveTo(65, 65);  // Move to the left eye's position
+        ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Draw left eye
+
+        // Right eye
+        ctx.moveTo(95, 65);  // Move to the right eye's position
+        ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Draw right eye
+
+        ctx.stroke();  // Render the drawing
+    }
+}
+
+let isSmiley = true;
+function toggleCanvas() {
+    if (isSmiley) {
+        drawFrawney();
+    } else {
+        drawSmiley2();
+    }
+    isSmiley = !isSmiley;
+}
+
+document.getElementById('canvas12').addEventListener('click', toggleCanvas);
+
 draw();
 drawRectangle();
 drawTriangle();
@@ -261,3 +317,4 @@ drawHeart();
 drawPacman();
 drawShapesWithHoles();
 drawPath2D();
+drawSmiley2();
