@@ -3,7 +3,7 @@ const books = document.querySelector(".books");
 const apiUrl = "https://goodreads12.p.rapidapi.com";
 const headers = {
     "x-rapidapi-host": "goodreads12.p.rapidapi.com",
-	  "x-rapidapi-key": "3fce1c804fmshed74b100755700cp19b98bjsn4eb22c9804d4"
+	  "x-rapidapi-key": ""
 };
 
  //input field
