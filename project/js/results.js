@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 const apiUrl = "https://www.googleapis.com";
-const key = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
+const key = "";
 
 const books = document.querySelector(".bookList");
 
