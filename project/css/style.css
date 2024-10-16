@@ -108,13 +108,25 @@ body {
     .logo img {
         width: 200px;
     }
-    .hero {
+    .mainBox {
         position: relative;
-        flex-direction: column;
-
+    }
+    .hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .heroImg {
+        display: block;
     }
     .searchBox {
         position: absolute;
-        left: 50%;
+        left: 30%;
+        top: 50%;
+        background-color: var(--accent1-color);
+    }
+    footer {
+        margin-top: .5rem;
     }
 }
