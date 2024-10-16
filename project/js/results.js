@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 const apiUrl = "https://www.googleapis.com";
-const key = "";
+const key = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
 
 const books = document.querySelector(".bookList");
 
@@ -19,21 +19,26 @@ async function getBooks(search) {
     try {
         const response = await fetch(`${apiUrl}/books/v1/volumes?q=${search}&key=${key}`);
         const data = await response.json();
-        console.log(data);
+        console.log(data); //test
         renderBooks(data.items);
     } catch (error) {
         console.error(error);
     }
 }
 
-function renderBooks(data) {
-    const html = data.map(book => {
+async function renderBooks(data) {
+    const html = await data.map(book => {
+        // if one of the properties is not available, display a default value
+        const title = book.volumeInfo.title || "No title available";
+        const authors = book.volumeInfo.authors || "No author available";
+        const image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "../images/no-image.jpg"
+        const publishedDate = book.volumeInfo.publishedDate || "No published date available";
         return `
             <div class="book">
-                <h2>${book.volumeInfo.title}</h2>
-                <p>${book.volumeInfo.authors}</p>
-                <img src="${book.volumeInfo.imageLinks.thumbnail}" alt="${book.volumeInfo.title}">
-                <p>${book.volumeInfo.publishedDate}</p>
+                <h2>${title}</h2>
+                <p>${authors}</p>
+                <img src="${image}" alt="${title}" width="128" height="179">
+                <p>Plucation date: ${publishedDate}</p>
             </div>
         `;
     }).join("");
