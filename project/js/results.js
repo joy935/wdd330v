@@ -36,9 +36,10 @@ async function renderBooks(data) {
         return `
             <div class="book">
                 <h2>${title}</h2>
-                <p>${authors}</p>
-                <img src="${image}" alt="${title}" width="128" height="179">
+                <p class="author">${authors}</p>
                 <p>Plucation date: ${publishedDate}</p>
+                <img class="thumbnail" src="${image}" alt="${title}" width="128" height="179">
+                <hr class="break">
             </div>
         `;
     }).join("");

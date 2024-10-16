@@ -16,6 +16,11 @@
 body {
     font-family: var(--body-font);
 }
+h1 {
+    font-family: var(--header-font);
+    font-size: 2rem;
+    margin: 1rem;
+}
 
 /* header */
 #header .logo {
@@ -82,10 +87,41 @@ body {
     border-radius: 3px;
 }
 
+/* BOOKS: search results */
+.bookList {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.book {
+    flex: 50%;
+    margin: 0.25em;
+    padding: 0.5em;
+    border: 1px solid var(--light-grey);
+    max-width: 250px;
+}
+.book h2 {
+    font-family: var--header-font;
+}
+.book .author {
+    font-style: italic;
+}
+.book .thumbnail {
+    margin-top: .4rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.book .break {
+    border-bottom: #4765A8;
+    margin-top: 1rem;
+}
+/* INSPIRE: get inspired books */
+
+/* media queries */
 @media screen and (min-width: 500px) {
     body {
         max-width: 1080px;
     }
+    /* header and footer */
     #header {
         display: flex;
         justify-content: space-between;
@@ -108,6 +144,11 @@ body {
     .logo img {
         width: 200px;
     }
+    footer {
+        margin-top: .5rem;
+    }
+
+    /* Homepage */
     .mainBox {
         position: relative;
     }
@@ -126,7 +167,5 @@ body {
         top: 50%;
         background-color: var(--accent1-color);
     }
-    footer {
-        margin-top: .5rem;
-    }
+    
 }
