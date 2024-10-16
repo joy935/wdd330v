@@ -35,11 +35,14 @@ async function renderBooks(data) {
         const publishedDate = book.volumeInfo.publishedDate || "No published date available";
         return `
             <div class="book">
+                <div class="book1">
+                <img class="thumbnail" src="${image}" alt="${title}" width="128" height="179">
+                </div>
+                <div clas="book2">
                 <h2>${title}</h2>
                 <p class="author">${authors}</p>
                 <p>Plucation date: ${publishedDate}</p>
-                <img class="thumbnail" src="${image}" alt="${title}" width="128" height="179">
-                <hr class="break">
+                </div>
             </div>
         `;
     }).join("");

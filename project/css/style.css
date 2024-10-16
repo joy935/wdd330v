@@ -90,18 +90,18 @@ h1 {
 /* BOOKS: search results */
 .bookList {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: wrap;
     justify-content: center;
 }
 .book {
     flex: 50%;
     margin: 0.25em;
     padding: 0.5em;
-    border: 1px solid var(--light-grey);
     max-width: 250px;
 }
 .book h2 {
     font-family: var--header-font;
+    color: var(--primary-color)
 }
 .book .author {
     font-style: italic;
@@ -109,10 +109,6 @@ h1 {
 .book .thumbnail {
     margin-top: .4rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.book .break {
-    border-bottom: #4765A8;
-    margin-top: 1rem;
 }
 /* INSPIRE: get inspired books */
 
@@ -167,5 +163,6 @@ h1 {
         top: 50%;
         background-color: var(--accent1-color);
     }
+    /* BOOKS: search results */
     
 }
