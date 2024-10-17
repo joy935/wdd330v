@@ -23,4 +23,3 @@ function doStuff(data) {
 }
 
 getPokemon(url);
-console.log("second: ",result);

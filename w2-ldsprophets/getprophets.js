@@ -7,7 +7,6 @@ const getData = async () => {
     try {
         const response = await fetch(url)
         data = await response.json();
-        //console.log(data);
         displayData(data.prophets);
     } catch (error) {
         console.error("Error fetching data: ", error)

@@ -14,7 +14,6 @@ const searchButton = document.querySelector("#searchBtn");
 document.getElementById("searchBtn").addEventListener("click", function(e) {
   e.preventDefault();
   const search = document.querySelector("#search").value;
-    console.log(search);
     getBooks(search);
 });
 
@@ -24,7 +23,6 @@ async function getBooks(search) {
             headers
         });
         const data = await response.json();
-        console.log(data);
         renderBooks(data);
     } catch (error) {
         console.error(error);
