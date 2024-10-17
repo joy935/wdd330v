@@ -5,7 +5,7 @@ loadHeaderFooter();
 const apiUrl = "https://www.googleapis.com";
 const key = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
 
-const bookDetails = document.querySelector(".book");
+const bookDetails = document.querySelector(".bookDetails");
 
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -35,15 +35,16 @@ function renderBook(data) {
     const description = book.description || "No description available.";
 
     const html = `
-        <div class="bookDetails">
-            <img class="thumbnail" src="${image}" alt="${title}" width="128" height="179">
+            <img class="thumbnail" src="${image}" alt="${title}" width="120" height="179">
             <h2>${title}</h2>
             <p>${subtitle}</p>
             <p class="author">${authors}</p>
-            <p>Categories: ${categories}</p>
-            <p>Page count: ${pageCount}</p>
+            <br>
+            <p><strong>Categories:</strong> ${categories}</p>
+            <p><strong>Page Count:</strong> ${pageCount}</p>
+            <br>
+            <h3>Description</h3>
             <p>${description}</p>
-        </div>
     `;
     bookDetails.innerHTML = html;
 }

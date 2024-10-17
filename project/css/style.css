@@ -99,11 +99,12 @@ h1 {
     padding: 0.5em;
     max-width: 250px;
 }
-.book h2 {
+.book h2, .bookDetails h2 {
     font-family: var--header-font;
-    color: var(--primary-color)
+    color: var(--primary-color);
+    margin-top: .3rem;
 }
-.book .author {
+.book .author, .bookDetails .author {
     font-style: italic;
 }
 .book .thumbnail {
@@ -111,6 +112,13 @@ h1 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 /* INSPIRE: get inspired books */
+/* similar to BOOKS: search results */
+
+/* BOOK: book details */
+.bookDetails {
+    margin: 1rem;
+}
+
 
 /* media queries */
 @media screen and (min-width: 500px) {
