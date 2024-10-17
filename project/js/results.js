@@ -23,7 +23,7 @@ async function getBooks(search) {
         console.error(error);
     }
 }
-// <a href="${book.volumeInfo.industryIdentifiers[1].identifier}>
+
 async function renderBooks(data) {
     const html = await data.map(book => {
         // if one of the properties is not available, display a default value
