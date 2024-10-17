@@ -53,7 +53,6 @@ function renderBook(data) {
         try {
             const response = await fetch(`${apiUrl}/books/v1/volumes?q=inauthor:${authors}&key=${key}`);
             const data = await response.json();
-            console.log(data);
             renderSameAuthor(data);
         } catch (error) {
             console.error(error);
@@ -77,8 +76,10 @@ function renderSameAuthor(data) {
 
                 return `
                     <div class="book">
-                        <img class="thumbnail" src="${image}" alt="${title}" width="120" height="179">
+                        <a href="../book/index.html?id=${books.id}">
+                            <img class="thumbnail" src="${image}" alt="${title}" width="120" height="179">
                         <h2>${title}</h2>
+                        </a>
                     </div>
                 `;
             }

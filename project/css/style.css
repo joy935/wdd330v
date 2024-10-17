@@ -118,7 +118,12 @@ button {
 .bookDetails {
     margin: 1rem;
 }
-
+.sameAuthorBtn {
+    margin-left: 1rem;
+}
+.book a {
+    text-decoration: none;
+}
 
 /* media queries */
 @media screen and (min-width: 500px) {
