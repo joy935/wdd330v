@@ -5,7 +5,6 @@ loadHeaderFooter();
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const search = urlParams.get("search");
-    console.log(search);
     getBooks(search);
     return search;
 });
@@ -19,7 +18,6 @@ async function getBooks(search) {
     try {
         const response = await fetch(`${apiUrl}/books/v1/volumes?q=${search}&key=${key}`);
         const data = await response.json();
-        console.log(data); //test
         renderBooks(data.items);
     } catch (error) {
         console.error(error);
@@ -41,10 +39,10 @@ async function renderBooks(data) {
                 <div clas="book2">
                 <h2>${title}</h2>
                 <p class="author">${authors}</p>
-                <p>Plucation date: ${publishedDate}</p>
+                <p>Publication date: ${publishedDate}</p>
                 </div>
             </div>
         `;
-    }).join("");
-    books.innerHTML = html;
+    })
+    books.innerHTML = html.join("");;
 }

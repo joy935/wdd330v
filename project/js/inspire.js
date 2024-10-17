@@ -13,7 +13,6 @@ async function getInspirtation() {
     try {
         const response = await fetch(`${apiUrl}?api-key=${key}`);
         const data = await response.json();
-        console.log(data); // test
         const filteredData = data.results.slice(0, 6); // add filter to get only 6 books
         await renderInspiration(filteredData);
     } catch (error) {
@@ -27,7 +26,6 @@ async function getBookCover(isbn) {
     try {
         const response = await fetch(`${apiUrl}/books/v1/volumes?q=isbn:${isbn}&key=${key}`);
         const data = await response.json();
-        console.log(data); // test
 
         if (data.totalItems === 0 || !data.items[0].volumeInfo.imageLinks) {
             return "../images/no-image.jpg";
@@ -46,15 +44,18 @@ async function renderInspiration(data) {
             const isbn = book.isbns.length > 0 ? book.isbns[0].isbn13 : null; // get the first isbn13
             const bookImage = isbn ? await getBookCover(isbn) : "../images/no-image.jpg"; // get the book cover
 
+            // if one of the properties is not available, display a default value
+            const title = book.title || "No title available";
+            const author = book.author || "No author available";
+
             return `
                 <div class="book">
-                    <h2>${book.title}</h2>
-                    <p>${book.author}</p>
-                    <img src="${bookImage}" alt="${book.title}" width="128" height="179">
+                    <img class="thumbnail" src="${bookImage}" alt="${book.title}" width="128" height="179">
+                    <h2>${title}</h2>
+                    <p>${author}</p>
                 </div>
             `;
         })
     );
-
     books.innerHTML = html.join("");
 }
