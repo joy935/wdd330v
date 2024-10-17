@@ -2,8 +2,6 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
-//const apiUrl = "https://api.nytimes.com/svc/books/v3/lists.json";
-//const apiUrl =  "https://api.nytimes.com/svc/books/v3/lists/full-overview.json";
 const apiUrl = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
 const key = "pDrDjUpIh4tcpfr713QffVM0OhPgJFuX";
 const books = document.querySelector(".bookList");
