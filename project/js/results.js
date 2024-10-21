@@ -17,7 +17,6 @@ async function getBooks(search) {
     try {
         const response = await fetch(`${apiUrl}/books/v1/volumes?q=${search}&key=${key}`);
         const data = await response.json();
-        console.log(data); // testing
         renderBooks(data.items);
     } catch (error) {
         console.error(error);
@@ -30,7 +29,18 @@ async function renderBooks(data) {
         const title = book.volumeInfo.title || "No title available";
         const authors = book.volumeInfo.authors || "No author available";
         const image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "../images/no-image.jpg"
-        const publishedDate = book.volumeInfo.publishedDate || "No published date available";
+        let publishedDate = book.volumeInfo.publishedDate || "No published date available";
+
+        // get the year and month from the published date
+        const date = new Date(publishedDate);
+        const getYear = date.getFullYear();
+        const getMonth = date.getMonth();
+
+        if (getMonth === 0) {
+            publishedDate = `${getYear}`;
+        } else {
+            publishedDate = `${date.toLocaleString('en', { month: 'long' })} ${getYear}`;
+        }
 
         return `
             <div class="book">
