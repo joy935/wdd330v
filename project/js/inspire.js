@@ -46,10 +46,27 @@ async function renderInspiration(data) {
             const title = book.title || "No title available";
             const author = book.author || "No author available";
 
+            // change to lowercase
+            const lowerCaseTitle = title.toLowerCase().trim();
+
+            // capitalize the title
+            const capitalizedTitle = lowerCaseTitle.split(" ").map(word => {
+                // if the word starts with a special character, like #, capitalize the second letter
+                if (/^[^a-zA-Z0-9]/.test(word)) {
+                    const specialChar = word.charAt(0);
+                    return specialChar + word.charAt(1).toUpperCase() + word.slice(2);
+                }
+                // if the word is "i", capitalize it
+                if (word === "i") {
+                    return "I";
+                }
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            }).join(" ");
+
             return `
                 <div class="book">
                     <img class="thumbnail" src="${bookImage}" alt="${book.title}" width="128" height="179">
-                    <h2>${title}</h2>
+                    <h2>${capitalizedTitle}</h2>
                     <p>${author}</p>
                 </div>
             `;
