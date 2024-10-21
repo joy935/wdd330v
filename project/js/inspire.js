@@ -18,6 +18,7 @@ async function getInspirtation() {
     }
 }
 
+// get the book cover
 async function getBookCover(isbn) {
     const apiUrl = "https://www.googleapis.com";
     const key = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
@@ -36,11 +37,31 @@ async function getBookCover(isbn) {
     }
 }
 
+// get the book id to use in the details page
+async function getBookDetails(isbn) {
+    const apiUrl = "https://www.googleapis.com";
+    const key = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
+    try {
+        const response = await fetch(`${apiUrl}/books/v1/volumes?q=isbn:${isbn}&key=${key}`);
+        const data = await response.json();
+
+        if (data.totalItems > 0 && data.items[0].id) {
+            return data.items[0].id;
+        } else {
+            return "No id available";
+        }
+    } catch (error) {
+        console.error(error);
+        return "No id available";
+    }
+}
+    
 async function renderInspiration(data) {
     const html = await Promise.all(
         data.map(async (book) => {
             const isbn = book.isbns.length > 0 ? book.isbns[0].isbn13 : null; // get the first isbn13
             const bookImage = isbn ? await getBookCover(isbn) : "../images/no-image.jpg"; // get the book cover
+            const bookId = isbn ? await getBookDetails(isbn) : "No id available"; // get the book id
 
             // if one of the properties is not available, display a default value
             const title = book.title || "No title available";
@@ -65,8 +86,10 @@ async function renderInspiration(data) {
 
             return `
                 <div class="book">
+                    <a href="../book/index.html?id=${bookId}">
                     <img class="thumbnail" src="${bookImage}" alt="${book.title}" width="128" height="179">
                     <h2>${capitalizedTitle}</h2>
+                    </a>
                     <p>${author}</p>
                 </div>
             `;
