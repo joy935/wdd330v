@@ -30,9 +30,25 @@ function renderBook(data) {
     const title = book.title || "No title available";
     const subtitle = book.subtitle || "";
     const authors = book.authors || "No author available";
-    const categories = book.categories || "No categories available";
+
+    const categories = book.categories[0] || "No categories available"; // get the first category only
+    const formattedCategories = categories.split("/").join("| "); // replace / with |
+        
     const pageCount = book.pageCount || "No page count available";
     const description = book.description || "No description available.";
+
+    let publishedDate = book.publishedDate || "No published date available";
+    // get the year and month from the published date
+    const date = new Date(publishedDate);
+    const getYear = date.getFullYear();
+    const getMonth = date.getMonth();
+    // if there's no month, display only the year
+    if (getMonth === 0) {
+        publishedDate = `${getYear}`;
+    // otherwise, display the month and year
+    } else {
+        publishedDate = `${date.toLocaleString('en', { month: 'long' })} ${getYear}`;
+    }
 
     const html = `
             <img class="thumbnail" src="${image}" alt="${title}" width="120" height="179">
@@ -40,8 +56,11 @@ function renderBook(data) {
             <p>${subtitle}</p>
             <p class="author">${authors}</p>
             <br>
-            <p><strong>Categories:</strong> ${categories}</p>
+            <div class="box">
+            <p class="categories"><strong>Categories:</strong> ${formattedCategories}</p>
             <p><strong>Page Count:</strong> ${pageCount}</p>
+            <p><strong>Published Date:</strong> ${publishedDate}</p>
+            </div>
             <br>
             <h3>Description</h3>
             <p>${description}</p>
@@ -72,6 +91,7 @@ function renderSameAuthor(data) {
             if (books.id != id) {
                 const book = books.volumeInfo;
                 const image = book.imageLinks ? book.imageLinks.thumbnail : "../images/no-image.jpg";
+                const subtitle = book.subtitle || "";
                 const title = book.title || "No title available";
 
                 return `
@@ -80,6 +100,7 @@ function renderSameAuthor(data) {
                             <img class="thumbnail" src="${image}" alt="${title}" width="120" height="179">
                         <h2>${title}</h2>
                         </a>
+                        <p>${subtitle}</p>
                     </div>
                 `;
             }

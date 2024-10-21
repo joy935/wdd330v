@@ -107,7 +107,7 @@ button {
 .book .author, .bookDetails .author {
     font-style: italic;
 }
-.book .thumbnail {
+.book .thumbnail, .thumbnail {
     margin-top: .4rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -124,7 +124,11 @@ button {
 .book a {
     text-decoration: none;
 }
-
+.box {
+    border: 1px solid var(--primary-color);
+    padding: .5rem;
+    border-radius: 2px;
+}
 /* media queries */
 @media screen and (min-width: 500px) {
     body {
