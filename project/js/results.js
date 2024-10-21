@@ -35,9 +35,10 @@ async function renderBooks(data) {
         const date = new Date(publishedDate);
         const getYear = date.getFullYear();
         const getMonth = date.getMonth();
-
+        // if there's no month, display only the year
         if (getMonth === 0) {
             publishedDate = `${getYear}`;
+        // otherwise, display the month and year
         } else {
             publishedDate = `${date.toLocaleString('en', { month: 'long' })} ${getYear}`;
         }
