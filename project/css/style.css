@@ -24,8 +24,8 @@ h1 {
 
 /* header */
 #header .logo {
-    align-items: center;
     display: flex;
+    align-items: center;
     width: 100%;
 }
 .navBox {
@@ -129,6 +129,49 @@ button {
     padding: .5rem;
     border-radius: 2px;
 }
+
+/* REGISTER: user registration */
+form { 
+    margin-left: .4rem;
+    margin-right: .4rem;
+}
+ form fieldset {
+    border: 1px solid var(--primary-color);
+    padding: .5rem;
+    margin: .5rem 0;
+    border-radius: 10px;
+    max-width: 400px;
+}
+form label.top {
+    display: block;
+    margin-top: .5rem;
+}
+form input {
+    font-size: 1.5rem;
+
+}
+form button {
+    margin-top: 1rem;
+    padding: .5rem;
+    font-size: 1.2rem;
+    background-color: var(--accent2-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+form input:required {
+    border: 1px solid red;
+}
+form input:valid {
+    border: 1px solid green;
+}
+form input:invalid {
+    border: 1px solid red;
+}
+form button:hover {
+    background-color: var(--accent1-color);
+}
 /* media queries */
 @media screen and (min-width: 500px) {
     body {
@@ -162,6 +205,10 @@ button {
     }
 
     /* Homepage */
+    .navBox {
+        flex-direction: row;
+        width: 180%;
+    }
     .mainBox {
         position: relative;
     }
@@ -180,6 +227,6 @@ button {
         top: 50%;
         background-color: var(--accent1-color);
     }
-    /* BOOKS: search results */
+
     
 }
