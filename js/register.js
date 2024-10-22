@@ -3,19 +3,38 @@ import { loadHeaderFooter } from "./utils.mjs";
 loadHeaderFooter();
 
 // event listener for the registration form
-document.getElementById("registerForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
-    const form = new FormData(this);
-    const response = await saveRegister(Object.fromEntries(form));
-    const data = await response.json();
-    if (response.ok) {
-        alert(data.message);
-        window.location.href = "login.html";
-    } else {
-        alert(data.message);
-    }
+document.getElementById("registerBtn").addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    await register();
 });
 
+
+function dataToJson(formElement) {
+    const formData = new FormData(formElement), convertedJSON = {};
+    formData.forEach((value, key) => {
+        convertedJSON[key] = value;
+    });
+    return convertedJSON;
+}
+
+async function register() {
+    const form = document.getElementById("registerForm");
+    const data = dataToJson(form);
+    console.log(data);
+    
+    data.fname = data.fname.trim();
+    data.lname = data.lname.trim();
+    data.password = data.password.trim();
+    data.password = data.password.trim();
+
+    try {
+        const response = await saveRegister(data);
+        console.log("API response", response);
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 async function saveRegister(form) {
     const options = {
