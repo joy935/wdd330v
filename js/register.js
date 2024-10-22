@@ -3,13 +3,13 @@ import { loadHeaderFooter } from "./utils.mjs";
 loadHeaderFooter();
 
 // event listener for the registration form
-document.getElementById("registerBtn").addEventListener("click", async (e) => {
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     await register();
 });
 
-
+// convert form data to JSON
 function dataToJson(formElement) {
     const formData = new FormData(formElement), convertedJSON = {};
     formData.forEach((value, key) => {
@@ -18,15 +18,25 @@ function dataToJson(formElement) {
     return convertedJSON;
 }
 
+// register user
 async function register() {
     const form = document.getElementById("registerForm");
     const data = dataToJson(form);
-    console.log(data);
-    
+    console.log("Form data", data);
+
     data.fname = data.fname.trim();
     data.lname = data.lname.trim();
+    data.email = data.email.trim();
     data.password = data.password.trim();
-    data.password = data.password.trim();
+
+    if (data.password !== data.confirmPassword) {
+        alert("Passwords do not match"); // change this later
+        return;
+        } else {
+            data.password = data.password.trim();
+        }
+    
+    delete data.confirmPassword; // remove confirmPassword from data object
 
     try {
         const response = await saveRegister(data);
@@ -36,6 +46,7 @@ async function register() {
     }
 }
 
+// save registration data
 async function saveRegister(form) {
     const options = {
         method: "POST",
@@ -44,5 +55,5 @@ async function saveRegister(form) {
         },
         body: JSON.stringify(form),
     };
-    return await fetch("http://localhost:3000/register", options);
+    return await fetch("http://localhost:3000/register", options); //add API endpoint
 }
