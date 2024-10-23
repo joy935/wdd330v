@@ -39,7 +39,7 @@ async function register() {
     delete data.confirmPassword; // remove confirmPassword from data object
 
     try {
-        const response = await saveRegister(data);
+        const response = registerUser(data.email, data.password);
         console.log("API response", response);
 
         if (response.ok) {
@@ -55,13 +55,12 @@ async function register() {
 }
 
 // save registration data
-async function saveRegister(form) {
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-    };
-    return await fetch("https://lucent-valkyrie-d70933.netlify.app/register", options); 
+const registerUser = (email, password) => {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    if (users.find(user => user.email === email)) {
+        return { error: "Email already registered" };
+    } else {
+        localStorage.setItem("users", JSON.stringify([...users, { email, password }]));
+        return { message: "User registered successfully" };
+    }
 }

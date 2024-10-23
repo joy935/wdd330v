@@ -27,24 +27,17 @@ async function login() {
     data.email = data.email.trim();
     data.password = data.password.trim();
 
-    try {
-        const response = await fetch("https://lucent-valkyrie-d70933.netlify.app/login",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
+    loginUser(data.email, data.password);
+}
 
-        const result = await response.json();
-
-        if (response.ok) {
-            console.log("API response", result);
-            window.location.href = "/index.html"; // redirect to home page
-        } else {
-            alert(result.message);
-        }
-    } catch (error) {
-            console.error("Error logging: ", error);
-        }
+const loginUser = (email, password) => {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(user => user.email === email);
+    if (user && user.password === password) {
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        alert("Login successful");
+        window.location.href = "/index.html"; // redirect to home page
+    } else {
+        alert("Invalid email or password");
+    }
 }
