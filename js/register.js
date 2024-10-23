@@ -41,6 +41,13 @@ async function register() {
     try {
         const response = await saveRegister(data);
         console.log("API response", response);
+
+        if (response.ok) {
+            const error = await response.json();
+            alert(error.message);
+            return;
+        }
+        console.log("User registered successfully");
         window.location.href = "/login/index.html";
     } catch (error) {
         console.error(error);
