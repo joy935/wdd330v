@@ -129,6 +129,10 @@ button {
     padding: .5rem;
     border-radius: 2px;
 }
+#addToWishlistBtn {
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
 
 /* REGISTER: user registration */
 form { 
