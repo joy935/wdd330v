@@ -1,3 +1,5 @@
+import { alertMessage } from "./utils.mjs";
+
  export default class Wishlist {
     constructor(userEmail) {
         this.email = userEmail;
@@ -22,9 +24,9 @@
         if (!this.isInWishlist(id)) {
             this.wishlist.push(id);
             this.saveWishlist();
-            alert("Book added to the wishlist");
+            alertMessage("Book added to the wishlist");
         } else {
-            alert("Book is already in the wishlist");
+            alertMessage("Book is already in the wishlist");
         }
     }
 
