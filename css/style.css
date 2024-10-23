@@ -45,6 +45,9 @@ h1 {
     color: black;
     font-size: 1.2rem;
 }
+.navBox a:hover {
+    color: var(--secondary-color);
+}
 .logo img {
     width: 100px;
 }
@@ -121,6 +124,10 @@ button {
 .sameAuthorBtn {
     margin-left: 1rem;
 }
+.sameAuthorBtn:hover {
+    background-color: var(--accent1-color);
+    color: black;
+}
 .book a {
     text-decoration: none;
 }
@@ -188,9 +195,13 @@ form button:hover {
 
 /* LOGIN: user login */
 /* similar to REGISTER: user registration */
-#loginBtn {
+#loginBtn, #registerBtn {
     display: block;
     margin: .5rem 0;
+}
+#loginBtn:hover, #registerBtn:hover {
+    background-color: var(--accent1-color);
+    color: black;
 }
 .registerLink {
     margin-left: 1rem;
