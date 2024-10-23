@@ -41,6 +41,7 @@ async function register() {
     try {
         const response = await saveRegister(data);
         console.log("API response", response);
+        window.location.href = "/login/index.html";
     } catch (error) {
         console.error(error);
     }

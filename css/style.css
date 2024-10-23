@@ -148,7 +148,6 @@ form label.top {
 }
 form input {
     font-size: 1.2rem;
-
 }
 form button {
     margin-top: 1rem;
@@ -172,6 +171,14 @@ form input:invalid {
 form button:hover {
     background-color: var(--accent1-color);
 }
+
+/* LOGIN: user login */
+/* similar to REGISTER: user registration */
+#loginBtn {
+    display: block;
+    margin: .5rem 0;
+}
+
 /* media queries */
 @media screen and (min-width: 500px) {
     body {

@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 const users = [];
 // path to json file
-const usersPath = "js/users.json";
+// const usersPath = "js/users.json";
 
 // async function loadUsers() {
 //     if (fs.existsSync(usersPath)) {
@@ -20,9 +20,9 @@ const usersPath = "js/users.json";
 //     return [];
 // }
 
-function saveUsers() {
-    fs.writeFileSync(usersPath, JSON.stringify(users, null, 2));
-}
+// function saveUsers() {
+//     fs.writeFileSync(usersPath, JSON.stringify(users, null, 2));
+// }
 
 // routes
 app.get('/', (req, res) => {
@@ -57,7 +57,24 @@ app.post('/register', (req, res) => {
 });
 
 // login route
-// create later
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    // validation
+    if (!email || !password) {
+        return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // const existingUsers = loadUsers();
+
+    // check if the user exists
+    const user = users.find(user => user.email === email && user.password === password);
+    if (!user) {
+        return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    res.status(200).json({ message: "Login successful" });
+});
 
 
 // start the server
