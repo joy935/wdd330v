@@ -1,5 +1,4 @@
 import { loadHeaderFooter } from "./utils.mjs";
-import Wishlist from "./wishlist.mjs";
 
 loadHeaderFooter();
 
@@ -23,7 +22,6 @@ function dataToJson(formElement) {
 async function login() {
     const form = document.getElementById("loginForm");
     const data = dataToJson(form);
-    console.log("Form data", data);
 
     data.email = data.email.trim();
     data.password = data.password.trim();
@@ -40,7 +38,7 @@ const loginUser = (email, password) => {
 
         // create a wishlist for the user????
 
-        window.location.href = "/index.html"; // redirect to home page
+        window.location.href = "../index.html"; // redirect to home page
     } else {
         alert("Invalid email or password");
     }
