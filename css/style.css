@@ -182,6 +182,9 @@ form button:hover {
     display: block;
     margin: .5rem 0;
 }
+.registerLink {
+    margin-left: 1rem;
+}
 
 /* media queries */
 @media screen and (min-width: 500px) {
