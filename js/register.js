@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, alertMessage } from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -22,20 +22,41 @@ function dataToJson(formElement) {
 async function register() {
     const form = document.getElementById("registerForm");
     const data = dataToJson(form);
-    console.log("Form data", data);
 
+    // validate form data
+    let alertList = [];
+    if (!data.fname) {
+        alertList.push("Please enter your first name");
+    }
+    if (!data.lname) {
+        alertList.push("Please enter your last name");
+    }
+    if (!data.email) {
+        alertList.push("Please enter your email");
+    }
+    if (data.password.length < 8) {
+        alertList.push("Password must be at least 8 characters");
+    }
+    if (data.password !== data.confirmPassword) {
+        // alert("Passwords do not match");
+        alertList.push("Passwords do not match");
+        return;
+        } else {
+            data.password = data.password.trim();
+        }
+    if (alertList.length > 0) { 
+        alertList.forEach((message) => {
+            alertMessage(message); // display alert message
+        });
+        return;
+    }
+
+    // trim whitespace from form data
     data.fname = data.fname.trim();
     data.lname = data.lname.trim();
     data.email = data.email.trim();
     data.password = data.password.trim();
 
-    if (data.password !== data.confirmPassword) {
-        alert("Passwords do not match"); // change this later
-        return;
-        } else {
-            data.password = data.password.trim();
-        }
-    
     delete data.confirmPassword; // remove confirmPassword from data object
 
     try {
@@ -44,7 +65,7 @@ async function register() {
 
         if (response.ok) {
             const error = await response.json();
-            alert(error.message);
+            console.error(error);
             return;
         }
         console.log("User registered successfully");

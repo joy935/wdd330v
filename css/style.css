@@ -192,6 +192,23 @@ form input:invalid {
 form button:hover {
     background-color: var(--accent1-color);
 }
+/* alerts */
+.alert {
+    background-color: rgb(245, 201, 201);
+    position: relative;
+
+}
+.alert p {
+    font-size: 1rem;
+    margin: .5rem;
+    padding: .5rem;
+}
+.alert button {
+    background: none;
+    position: absolute;
+    top: 5%;
+    right: 0.1rem;
+}
 
 /* LOGIN: user login */
 /* similar to REGISTER: user registration */
