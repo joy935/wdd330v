@@ -48,7 +48,7 @@ async function register() {
             return;
         }
         console.log("User registered successfully");
-        window.location.href = "/login/index.html";
+        window.location.href = "../login/index.html";
     } catch (error) {
         console.error(error);
     }
