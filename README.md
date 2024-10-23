@@ -1,64 +1,34 @@
 <header>
-
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
-
-# Introduction to GitHub
-
-_Get started using GitHub in less than an hour._
-
+  WDD230 - Web Frontend Development II
+  Fall 2024
+  Author : Veihi Tupai
+  Personal Project : We Read
 </header>
 
-<!--
-  <<< Author notes: Finish >>>
-  Review what we learned, ask for feedback, provide next steps.
--->
+## Overview
+1) What is the problem we are trying to solve?
+People’s attention span has been decreasing over the years and social media has contributed to this effect. Reading can stimulate the imagination, help people to refocus and open the mind to different ideas and cultures. Reading could help people to learn and entertain themselves more meaningfully. The We Read website aims to help people find and discover books more easily.
 
-## Finish
+2) Why are we doing this?
+The purpose of the We Read website will allow to search for books by title, author, genre and keywords. It will also give inspiration through the New York Times best reads and reviews. Additionally, it will facilitate the purchase of books through links to Amazon. Finally, the user can create an account to build a personalized Wishlist of books. The website will serve as a platform to get people to read more or to start to read, a book at a time. 
 
-_Congratulations, you've completed this course and joined the world of developers!_
+## Audience
+The target audience is teenagers, young adults and adults regardless of gender. They may be avid readers or in search of a book that will start their reading journey. The teenagers and young adults’ audience would highly access the site with a phone and more mature audience with a desktop or a laptop.
 
-<img src=https://octodex.github.com/images/collabocats.jpg alt=celebrate width=300 align=right>
+## Major Functions of the Application 
+-	Search functionality by keyword, title, author and genre.
+-	Display the result of the search query: title, image and short description.
+-	Display detailed information about a title and an author: title, image and details.
+-	Display the New York Time best reads: 6 recommendations.
+-	Link to buy a copy of a book through Amazon.
+-	User registration: get the user’s name, email and password.
+-	User login: use the user’s email and password.
+-	Create a Wishlist: only books can be added in a wishlist.
+-	View and edit the Wishlist: display the wishlist and remove a book at a time.
 
-Here's a recap of your accomplishments:
-
-- You learned about GitHub, repositories, branches, commits, and pull requests.
-- You created a branch, a commit, and a pull request.
-- You merged a pull request.
-- You made your first contribution! :tada:
-
-### What's next?
-
-If you'd like to make a profile README, use the quickstart instructions below or follow the instructions in the [Managing your profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme) article.
-
-1. Make a new public repository with a name that matches your GitHub username.
-2. Create a file named `README.md` in its root. The "root" means not inside any folder in your repository.
-3. Edit the contents of the `README.md` file.
-4. If you created a new branch for your file, open and merge a pull request on your branch.
-5. Lastly, we'd love to hear what you thought of this course [in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github).
-
-Check out these resources to learn more or get involved:
-
-- Are you a student? Check out the [Student Developer Pack](https://education.github.com/pack).
-- [Take another GitHub Skills course](https://github.com/skills).
-- [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
-- To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
+## External API Data Sources
+1) Google Books API: title, subtitle, authors, publisher, publishedDate, description, industryIdentifiers (ISBN), imageLinks. salesInfo, accessInfo.
+2) New York Time Books API: list_name, display_name, bestsellers_date, published_date, rank, rank_last_week, weeks_on_list, amazon_product_url, book_details, reviews, book_review_link.
 
 <footer>
-
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
-
----
-
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
 </footer>
