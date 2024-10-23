@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, alertMessage } from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -36,10 +36,9 @@ const loginUser = (email, password) => {
         localStorage.setItem("currentUser", JSON.stringify(user));
         alert("Login successful");
 
-        // create a wishlist for the user????
 
         window.location.href = "../index.html"; // redirect to home page
     } else {
-        alert("Invalid email or password");
+        alertMessage("Invalid email or password");
     }
 }

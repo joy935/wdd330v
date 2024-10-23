@@ -38,7 +38,6 @@ async function register() {
         alertList.push("Password must be at least 8 characters");
     }
     if (data.password !== data.confirmPassword) {
-        // alert("Passwords do not match");
         alertList.push("Passwords do not match");
         return;
         } else {
