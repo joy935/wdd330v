@@ -50,12 +50,9 @@ function displayWishlist(wishlistItems) {
 
 document.querySelector(".bookList").addEventListener("click", function(event) {
     if (event.target.classList.contains("removeBtn")) {
-        const bookId = event.target.dataset.id;
-        
-        const wishlist = new Wishlist(currentUser.email);
-        console.log(bookId);
-        console.log(wishlist);
-        wishlist.remove(bookId);
-        location.reload();
+        const bookId = event.target.dataset.id; // get the book id
+        const wishlist = new Wishlist(currentUser.email); // create a new wishlist instance
+        wishlist.remove(bookId); // remove the book from the wishlist
+        location.reload(); // reload the page
     }
 });
