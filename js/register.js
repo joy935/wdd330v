@@ -56,5 +56,5 @@ async function saveRegister(form) {
         },
         body: JSON.stringify(form),
     };
-    return await fetch("http://localhost:3000/register", options); //add API endpoint
+    return await fetch("https://lucent-valkyrie-d70933.netlify.app/register", options); 
 }

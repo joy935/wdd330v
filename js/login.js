@@ -28,7 +28,7 @@ async function login() {
     data.password = data.password.trim();
 
     try {
-        const response = await fetch("http://localhost:3000/login",{
+        const response = await fetch("https://lucent-valkyrie-d70933.netlify.app/login",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
