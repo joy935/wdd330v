@@ -1,4 +1,5 @@
 import { loadHeaderFooter } from "./utils.mjs";
+import Wishlist from "./wishlist.mjs";
 
 loadHeaderFooter();
 
@@ -21,6 +22,19 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     getBook();
+
+    // add the book to the wishlist
+    const wishlistBtn = document.getElementById("addToWishlistBtn");
+    wishlistBtn.addEventListener("click", function() {
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (currentUser) {
+            const wishlist = new Wishlist(currentUser.email);
+            console.log("before ", wishlist)
+            wishlist.add(id);
+            console.log("after ", wishlist)
+        } else {
+            alert("Please log in to add books to your wishlist.");
+        }});
 });
 
 function renderBook(data) {
