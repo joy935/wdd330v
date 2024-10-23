@@ -1,7 +1,7 @@
 <header>
-  WDD230 - Web Frontend Development II
-  Fall 2024
-  Author : Veihi Tupai
+  WDD230 - Web Frontend Development II | 
+  Fall 2024 | 
+  Veihi Tupai | 
   Personal Project : We Read
 </header>
 
