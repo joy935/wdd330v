@@ -30,7 +30,7 @@
 
     // remove a book from the wishlist
     remove(id) {
-        this.wishlist = this.wishlist.filter((book) => book.id !== id);
+        this.wishlist = this.wishlist.filter((bookId) => bookId !== id);
         this.saveWishlist();
     }
 

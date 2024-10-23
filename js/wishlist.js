@@ -42,8 +42,20 @@ function displayWishlist(wishlistItems) {
                 </a>
                 <p class="author">${authors}</p>
                 <p class="publisher">Publisher: ${publisher}</p>
+                <button class="removeBtn" data-id="${book}">Remove</button>
             </div>
         `;
-
-    })
+    });
 }
+
+document.querySelector(".bookList").addEventListener("click", function(event) {
+    if (event.target.classList.contains("removeBtn")) {
+        const bookId = event.target.dataset.id;
+        
+        const wishlist = new Wishlist(currentUser.email);
+        console.log(bookId);
+        console.log(wishlist);
+        wishlist.remove(bookId);
+        location.reload();
+    }
+});

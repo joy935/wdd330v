@@ -42,9 +42,13 @@ function renderBook(data) {
     const title = book.title || "No title available";
     const subtitle = book.subtitle || "";
     const authors = book.authors || "No author available";
-
-    const categories = book.categories[0] || "No categories available"; // get the first category only
-    const formattedCategories = categories.split("/").join("| "); // replace / with |
+    let formattedCategories = "";
+    const categories = book.categories || "No categories available"; // get the first category only
+    if (categories) {
+        formattedCategories = "No categories available";
+    } else {
+        formattedCategories = categories.split("/").join("| "); // replace / with |
+    }
         
     const pageCount = book.pageCount || "No page count available";
     const description = book.description || "No description available.";
