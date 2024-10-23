@@ -29,9 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const currentUser = JSON.parse(localStorage.getItem("currentUser"));
         if (currentUser) {
             const wishlist = new Wishlist(currentUser.email);
-            console.log("before ", wishlist)
             wishlist.add(id);
-            console.log("after ", wishlist)
         } else {
             alert("Please log in to add books to your wishlist.");
         }});
