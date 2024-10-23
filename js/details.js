@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, alertMessage } from "./utils.mjs";
 import Wishlist from "./wishlist.mjs";
 
 loadHeaderFooter();
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const wishlist = new Wishlist(currentUser.email);
             wishlist.add(id);
         } else {
-            alert("Please log in to add books to your wishlist.");
+            alertMessage("Please log in to add books to your wishlist.");
         }});
 });
 
