@@ -1,4 +1,5 @@
 import { loadHeaderFooter, formatDate, alertMessage } from "./utils.mjs";
+import { fetchBook } from "./googleBooks.mjs";
 import Wishlist from "./wishlist.mjs";
 
 loadHeaderFooter();
@@ -12,16 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
-    async function getBook() {
-        try {
-            const response = await fetch(`${apiUrl}/books/v1/volumes/${id}?key=${key}`);
-            const data = await response.json();
-            renderBook(data);
-        } catch (error) {
-            console.error(error); // eslint-disable-line no-console
-        }
-    }
-    getBook();
+    const getBooks = fetchBook(id);
+    getBooks.then(data => renderBook(data));
 
     // add the book to the wishlist
     const wishlistBtn = document.getElementById("addToWishlistBtn");
