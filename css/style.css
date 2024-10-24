@@ -91,7 +91,7 @@ button {
 }
 
 /* BOOKS: search results */
-.bookList {
+.bookList, .bookList2 {
     display: flex;
     flex-flow: wrap;
     justify-content: center;
