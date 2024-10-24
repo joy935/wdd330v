@@ -18,6 +18,21 @@ export async function loadHeaderFooter() {
     renderWithTemplate(footer, getFooter);
 }
 
+export function formatDate(publishedDate) {
+    if (!publishedDate) {
+      return "No published date available";
+    } else {
+        const date = new Date(publishedDate);
+        const getYear = date.getFullYear();
+        const getMonth = date.getMonth();
+        if (getMonth === 0) {
+            return getYear;
+        } else {
+            return `${date.toLocaleString("en", { month: "long" })} ${getYear}`;
+        }
+    }
+}
+
 export function alertMessage(message, scroll=true) {
     const alert = document.createElement("div");
     alert.classList.add("alert");

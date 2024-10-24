@@ -1,4 +1,4 @@
-import { loadHeaderFooter, alertMessage } from "./utils.mjs";
+import { loadHeaderFooter, formatDate, alertMessage } from "./utils.mjs";
 import Wishlist from "./wishlist.mjs";
 
 loadHeaderFooter();
@@ -65,18 +65,7 @@ function renderBook(data) {
     const pageCount = book.pageCount || "No page count available";
     const description = book.description || "No description available.";
 
-    let publishedDate = book.publishedDate || "No published date available";
-    // get the year and month from the published date
-    const date = new Date(publishedDate);
-    const getYear = date.getFullYear();
-    const getMonth = date.getMonth();
-    // if there's no month, display only the year
-    if (getMonth === 0) {
-        publishedDate = `${getYear}`;
-    // otherwise, display the month and year
-    } else {
-        publishedDate = `${date.toLocaleString("en", { month: "long" })} ${getYear}`;
-    }
+    const publishedDate = formatDate(book.publishedDate);
 
     const html = `
             <img class="thumbnail" src="${image}" alt="${title}" width="120" height="179">
