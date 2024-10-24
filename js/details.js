@@ -1,4 +1,4 @@
-import { loadHeaderFooter, formatDate, alertMessage } from "./utils.mjs";
+import { loadHeaderFooter, formatDate, formatCategories, formatBuyLink, alertMessage } from "./utils.mjs";
 import { fetchBook } from "./googleBooks.mjs";
 import Wishlist from "./wishlist.mjs";
 
@@ -35,30 +35,15 @@ function renderBook(data) {
     const title = book.title || "No title available";
     const subtitle = book.subtitle || "";
     const authors = book.authors || "No author available";
-
-    // get the categories if available
-    let formattedCategories = "";
-    const categories = book.categories && book.categories[0] ? book.categories[0] : "No categories available";
-    if (categories.length === 0 || categories === "No categories available") {
-        formattedCategories = "No categories available";
-    } else {
-        formattedCategories = categories.split("/").join("| "); // replace / with |
-    }
-
-    // get the buy link if available
-    const buy = data.saleInfo;
-    const buyLink = buy.buyLink || "No buy link available";
-    let buyLinkElement = "";
-    if (buyLink === "No buy link available") {
-        buyLinkElement = `<p>No buy link available</p>`;
-    } else {
-        buyLinkElement = `<p><a href="${buyLink}" target="_blank">Buy this book</a></p>` 
-    } 
+    const categories = formatCategories(book.categories[0]);
 
     const pageCount = book.pageCount || "No page count available";
+    const publishedDate = formatDate(book.publishedDate);
+
     const description = book.description || "No description available.";
 
-    const publishedDate = formatDate(book.publishedDate);
+    const buy = data.saleInfo;
+    const buyLinkElement = formatBuyLink(buy.buyLink);
 
     const html = `
             <img class="thumbnail" src="${image}" alt="${title}" width="120" height="179">
@@ -67,7 +52,7 @@ function renderBook(data) {
             <p class="author">${authors}</p>
             <br>
             <div class="box">
-            <p class="categories"><strong>Categories:</strong> ${formattedCategories}</p>
+            <p class="categories"><strong>Categories:</strong> ${categories}</p>
             <p><strong>Page Count:</strong> ${pageCount}</p>
             <p><strong>Published Date:</strong> ${publishedDate}</p>
             </div>

@@ -33,6 +33,22 @@ export function formatDate(publishedDate) {
     }
 }
 
+export function formatCategories(categories) {
+    if (!categories || categories.length === 0) {
+      return "No categories available";
+    } else {
+        return categories.split("/").join("| ");
+    }
+}
+
+export function formatBuyLink(buyLink) {
+    if (buyLink === "No buy link available") {
+        return `<p>No buy link available</p>`;
+    } else {
+        return `<p><a href="${buyLink}" target="_blank">Buy this book</a></p>`;
+    }
+}
+
 export function alertMessage(message, scroll=true) {
     const alert = document.createElement("div");
     alert.classList.add("alert");
