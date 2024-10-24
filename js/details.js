@@ -104,7 +104,7 @@ function renderBook(data) {
             const data = await response.json();
             renderSameAuthor(data);
         } catch (error) {
-            console.error(error); // eslint-disable-line no-console
+            console.error(error); //
         }
     });
 }

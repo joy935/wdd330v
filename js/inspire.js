@@ -1,4 +1,5 @@
 import { loadHeaderFooter } from "./utils.mjs";
+import { fetchBookCover, fetchBookDetails } from "./googleBooks.mjs";
 
 loadHeaderFooter();
 
@@ -19,44 +20,6 @@ async function fetchAndRenderBooks(listType, element) {
         console.error("Error fetching ${listType} ", error); // eslint-disable-line no-console
     }
 }
-
-// get the book cover
-async function getBookCover(isbn) {
-    const apiUrl = "https://www.googleapis.com";
-    const key = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
-    try {
-        const response = await fetch(`${apiUrl}/books/v1/volumes?q=isbn:${isbn}&key=${key}`);
-        const data = await response.json();
-
-        if (data.totalItems === 0 || !data.items[0].volumeInfo.imageLinks) {
-            return "../images/no-image.jpg";
-        } else {
-            return data.items[0].volumeInfo.imageLinks.thumbnail;
-        }
-    } catch (error) {
-        console.error(error); // eslint-disable-line no-console
-        return "../images/no-image.jpg";
-    }
-}
-
-// get the book id to use in the details page
-async function getBookDetails(isbn) {
-    const apiUrl = "https://www.googleapis.com";
-    const key = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
-    try {
-        const response = await fetch(`${apiUrl}/books/v1/volumes?q=isbn:${isbn}&key=${key}`);
-        const data = await response.json();
-
-        if (data.totalItems > 0 && data.items[0].id) {
-            return data.items[0].id;
-        } else {
-            return "No id available";
-        }
-    } catch (error) {
-        console.error(error); // eslint-disable-line no-console
-        return "No id available";
-    }
-}
     
 async function renderBooks(data, element) {
     const limitedResults = data.results.slice(0, 4); // add filter to get only 4 books
@@ -66,8 +29,8 @@ async function renderBooks(data, element) {
             const bookDetails = book.book_details[0];
 
             const isbn = book.isbns.length > 0 ? book.isbns[0].isbn13 : null; // get the first isbn13
-            const bookImage = isbn ? await getBookCover(isbn) : "../images/no-image.jpg"; // get the book cover
-            const bookId = isbn ? await getBookDetails(isbn) : "No id available"; // get the book id
+            const bookImage = isbn ? await fetchBookCover(isbn) : "../images/no-image.jpg"; // get the book cover
+            const bookId = isbn ? await fetchBookDetails(isbn) : "No id available"; // get the book id
 
             // if one of the properties is not available, display a default value
             const title = bookDetails.title || "No title available";
