@@ -43,13 +43,14 @@ function renderBook(data) {
     const subtitle = book.subtitle || "";
     const authors = book.authors || "No author available";
     let formattedCategories = "";
-    const categories = book.categories || "No categories available"; // get the first category only
-    if (categories) {
+    const categories = book.categories && book.categories[0] ? book.categories[0] : "No categories available";
+    if (categories.length === 0 || categories === "No categories available") {
         formattedCategories = "No categories available";
     } else {
         formattedCategories = categories.split("/").join("| "); // replace / with |
     }
-        
+    const buyLink = book.canonicalVolumeLink || "No buy link available";
+
     const pageCount = book.pageCount || "No page count available";
     const description = book.description || "No description available.";
 
@@ -80,6 +81,8 @@ function renderBook(data) {
             <br>
             <h3>Description</h3>
             <p>${description}</p>
+            <br>
+            <p><a href="${buyLink}" target="_blank">Buy this book</a></p>
     `;
     bookDetails.innerHTML = html;
 
