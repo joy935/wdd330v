@@ -42,6 +42,8 @@ function renderBook(data) {
     const title = book.title || "No title available";
     const subtitle = book.subtitle || "";
     const authors = book.authors || "No author available";
+
+    // get the categories if available
     let formattedCategories = "";
     const categories = book.categories && book.categories[0] ? book.categories[0] : "No categories available";
     if (categories.length === 0 || categories === "No categories available") {
@@ -49,7 +51,16 @@ function renderBook(data) {
     } else {
         formattedCategories = categories.split("/").join("| "); // replace / with |
     }
-    const buyLink = book.canonicalVolumeLink || "No buy link available";
+
+    // get the buy link if available
+    const buy = data.saleInfo;
+    const buyLink = buy.buyLink || "No buy link available";
+    let buyLinkElement = "";
+    if (buyLink === "No buy link available") {
+        buyLinkElement = `<p>No buy link available</p>`;
+    } else {
+        buyLinkElement = `<p><a href="${buyLink}" target="_blank">Buy this book</a></p>` 
+    } 
 
     const pageCount = book.pageCount || "No page count available";
     const description = book.description || "No description available.";
@@ -82,7 +93,7 @@ function renderBook(data) {
             <h3>Description</h3>
             <p>${description}</p>
             <br>
-            <p><a href="${buyLink}" target="_blank">Buy this book</a></p>
+            ${buyLinkElement}
     `;
     bookDetails.innerHTML = html;
 
