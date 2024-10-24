@@ -1,20 +1,29 @@
 import { loadHeaderFooter, formatDate, formatCategories, formatBuyLink, alertMessage } from "./utils.mjs";
-import { fetchBook } from "./googleBooks.mjs";
 import Wishlist from "./wishlist.mjs";
 
 loadHeaderFooter();
 
-const apiUrl = "https://www.googleapis.com";
-const key = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
 const bookDetails = document.querySelector(".bookDetails");
 const sameAuthorBtn = document.querySelector(".sameAuthorBtn");
 
-document.addEventListener("DOMContentLoaded", function() {
+const googleBooksApiUrl = "https://www.googleapis.com";
+const googleBooksApiKey = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
+
+document.addEventListener("DOMContentLoaded", function() {å
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
-    const getBooks = fetchBook(id);
-    getBooks.then(data => renderBook(data));
+    // fetch the book details through the book id
+    async function getBook() {
+        try {
+            const response = await fetch(`${googleBooksApiUrl}/books/v1/volumes/${id}?key=${googleBooksApiKey}`);
+            const data = await response.json();
+            renderBook(data);
+        } catch (error) {
+            console.error(error); // eslint-disable-line no-console
+        }
+    }
+    getBook();
 
     // add the book to the wishlist
     const wishlistBtn = document.getElementById("addToWishlistBtn");
@@ -27,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function() {
             alertMessage("Please log in to add books to your wishlist.");
         }});
 });
+
+
 
 function renderBook(data) {
     const book = data.volumeInfo;
@@ -67,11 +78,11 @@ function renderBook(data) {
     // get books from the same author
     sameAuthorBtn.addEventListener("click", async function () {
         try {
-            const response = await fetch(`${apiUrl}/books/v1/volumes?q=inauthor:${authors}&key=${key}`);
+            const response = await fetch(`${googleBooksApiUrl}/books/v1/volumes?q=inauthor:${authors}&key=${googleBooksApiKey}`);
             const data = await response.json();
             renderSameAuthor(data);
         } catch (error) {
-            console.error(error); //
+            console.error(error); // eslint-disable-line no-console
         }
     });
 }

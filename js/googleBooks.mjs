@@ -34,25 +34,3 @@ export async function fetchBookDetails(isbn) {
         return "No id available";
     }
 }
-
-// get the book through keyword search 
-export async function fetchBooksKeyword(search) {
-    try {
-        const response = await fetch(`${googleBooksApiUrl}/books/v1/volumes?q=${search}&key=${googleBooksApiKey}`);
-        const data = await response.json();
-        return data.items;
-    } catch (error) {
-        console.error(error); // eslint-disable-line no-console
-    }
-}
-
-// get the book details through the book id
-export async function fetchBook(id) {
-    try {
-        const response = await fetch(`${googleBooksApiUrl}/books/v1/volumes/${id}?key=${googleBooksApiKey}`);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error(error); // eslint-disable-line no-console
-    }
-}
