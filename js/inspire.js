@@ -16,7 +16,7 @@ async function fetchAndRenderBooks(listType, element) {
         const data = await response.json();
         await renderBooks(data, element);
     } catch (error) {
-        console.error("Error fetching ${listType} ", error);
+        console.error("Error fetching ${listType} ", error); // eslint-disable-line no-console
     }
 }
 
@@ -34,7 +34,7 @@ async function getBookCover(isbn) {
             return data.items[0].volumeInfo.imageLinks.thumbnail;
         }
     } catch (error) {
-        console.error(error);
+        console.error(error); // eslint-disable-line no-console
         return "../images/no-image.jpg";
     }
 }
@@ -53,7 +53,7 @@ async function getBookDetails(isbn) {
             return "No id available";
         }
     } catch (error) {
-        console.error(error);
+        console.error(error); // eslint-disable-line no-console
         return "No id available";
     }
 }

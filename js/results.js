@@ -19,7 +19,7 @@ async function getBooks(search) {
         const data = await response.json();
         renderBooks(data.items);
     } catch (error) {
-        console.error(error);
+        console.error(error); // eslint-disable-line no-console
     }
 }
 
@@ -40,7 +40,7 @@ async function renderBooks(data) {
             publishedDate = `${getYear}`;
         // otherwise, display the month and year
         } else {
-            publishedDate = `${date.toLocaleString('en', { month: 'long' })} ${getYear}`;
+            publishedDate = `${date.toLocaleString("en", { month: "long" })} ${getYear}`;
         }
 
         return `

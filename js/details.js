@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const data = await response.json();
             renderBook(data);
         } catch (error) {
-            console.error(error);
+            console.error(error); // eslint-disable-line no-console
         }
     }
     getBook();
@@ -75,7 +75,7 @@ function renderBook(data) {
         publishedDate = `${getYear}`;
     // otherwise, display the month and year
     } else {
-        publishedDate = `${date.toLocaleString('en', { month: 'long' })} ${getYear}`;
+        publishedDate = `${date.toLocaleString("en", { month: "long" })} ${getYear}`;
     }
 
     const html = `
@@ -104,7 +104,7 @@ function renderBook(data) {
             const data = await response.json();
             renderSameAuthor(data);
         } catch (error) {
-            console.error(error);
+            console.error(error); // eslint-disable-line no-console
         }
     });
 }

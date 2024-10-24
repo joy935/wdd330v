@@ -1,8 +1,6 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import fs from "fs";
-import path from "path";
  
 const app = express();
 app.use(cors());
@@ -25,11 +23,11 @@ const users = [];
 // }
 
 // routes
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     res.send("Server is running");
 });
 // register route
-app.post('/register', (req, res) => {
+app.post("/register", (req, res) => {
     const { fname, lname, email, password } = req.body;
 
     // validation
@@ -57,7 +55,7 @@ app.post('/register', (req, res) => {
 });
 
 // login route
-app.post('/login', (req, res) => {
+app.post("/login", (req, res) => {
     const { email, password } = req.body;
 
     // validation
@@ -80,5 +78,6 @@ app.post('/login', (req, res) => {
 // start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
+    // eslint-disable-next-line no-console
     console.log(`Server is running on port http://localhost:${port}`);
 });

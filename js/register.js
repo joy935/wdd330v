@@ -60,17 +60,15 @@ async function register() {
 
     try {
         const response = registerUser(data.email, data.password);
-        console.log("API response", response);
 
         if (response.ok) {
             const error = await response.json();
-            console.error(error);
+            console.error(error); // eslint-disable-line no-console
             return;
         }
-        console.log("User registered successfully");
         window.location.href = "../login/index.html";
     } catch (error) {
-        console.error(error);
+        console.error(error); // eslint-disable-line no-console
     }
 }
 
