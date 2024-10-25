@@ -59,13 +59,14 @@ async function register() {
     delete data.confirmPassword; // remove confirmPassword from data object
 
     try {
-        const response = registerUser(data.email, data.password);
+        const response = registerUser(data.fname, data.email, data.password);
 
         if (response.ok) {
             const error = await response.json();
             console.error(error); // eslint-disable-line no-console
             return;
         }
+        localStorage.setItem("isRegistered", true);
         window.location.href = "../login/index.html";
     } catch (error) {
         console.error(error); // eslint-disable-line no-console
@@ -73,12 +74,12 @@ async function register() {
 }
 
 // save registration data
-const registerUser = (email, password) => {
+const registerUser = (fname, email, password) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     if (users.find(user => user.email === email)) {
         return { error: "Email already registered" };
     } else {
-        localStorage.setItem("users", JSON.stringify([...users, { email, password }]));
+        localStorage.setItem("users", JSON.stringify([...users, { fname, email, password }]));
         return { message: "User registered successfully" };
     }
 }
