@@ -47,7 +47,7 @@ const loginUser = (email, password) => {
     const user = users.find(user => user.email === email);
     if (user && user.password === password) {
         localStorage.setItem("currentUser", JSON.stringify(user));
-        
+        localStorage.setItem("isLoggedIn", true);
         window.location.href = "../index.html"; // redirect to home page
         
     } else {
