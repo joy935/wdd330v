@@ -114,6 +114,15 @@ button {
     margin-top: .4rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+#pagination {
+    justify-content: center;
+    text-align: center;
+}
+hr {
+    border-top: 1px solid var(--primary-color);
+}
+#pageInfo {margin-top: .4rem;}
+
 /* INSPIRE: get inspired books */
 /* similar to BOOKS: search results */
 
