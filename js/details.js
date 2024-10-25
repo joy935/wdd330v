@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const currentUser = JSON.parse(localStorage.getItem("currentUser"));
         if (currentUser) {
             const wishlist = new Wishlist(currentUser.email);
+            shakeWishlistIcon();
             wishlist.add(id);
         } else {
             alertMessage("Please log in to add books to your wishlist.");
@@ -117,4 +118,14 @@ function renderSameAuthor(data) {
     } else {
         sameAuthorBooks.innerHTML = "<p>No other books by this author found.</p>";
     }
+}
+
+function shakeWishlistIcon() {
+    const wishlistIcon = document.getElementById('wishlistIcon');
+    
+    wishlistIcon.classList.add('shake');
+    
+    setTimeout(() => {
+        wishlistIcon.classList.remove('shake');
+    }, 500);
 }

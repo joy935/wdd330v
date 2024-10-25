@@ -114,6 +114,9 @@ button {
     margin-top: .4rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.book .thumbnail:hover {
+    transform: scale(1.1);
+}
 #pagination {
     justify-content: center;
     text-align: center;
@@ -160,14 +163,24 @@ hr {
 #addToWishlistBtn:hover {
     animation: myanimation 2s;
 }
+#wishlistIcon.shake{
+    animation: myanimation 0.5s;
+}
 @keyframes myanimation {
     0% { transform: scale(1); }
   25% { transform: scale(1.2); }
   50% { transform: scale(1); }
-  75% { transform: scale(1.2); }
-  100% { transform: scale(1); }
     
 }
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
 /* REGISTER: user registration */
 form { 
     margin-left: .4rem;
@@ -240,6 +253,10 @@ form button:hover {
 .registerLink {
     margin-left: 1rem;
 }
+
+/* WISHLIST: user wishlist */
+/* similar to BOOKS: search results */
+
 
 /* media queries */
 @media screen and (min-width: 500px) {
