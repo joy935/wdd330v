@@ -58,7 +58,7 @@ async function renderBooks(data) {
             <div class="book">
                 <div class="book1">
                 <a href="../book/index.html?id=${book.id}">
-                    <img class="thumbnail" src="${image}" alt="${title}" width="128" height="179"></a>
+                    <img class="thumbnail" src="${image}" alt="${title}" width="128" height="179" loading="lazy"></a>
                 </div>
                 <div class="book2">
                 <a href="../book/index.html?id=${book.id}">

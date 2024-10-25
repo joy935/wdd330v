@@ -106,7 +106,7 @@ function renderSameAuthor(data) {
                 return `
                     <div class="book">
                         <a href="../book/index.html?id=${books.id}">
-                            <img class="thumbnail" src="${image}" alt="${title}" width="120" height="179">
+                            <img class="thumbnail" src="${image}" alt="${title}" width="120" height="179" loading="lazy">
                         <h2>${title}</h2>
                         </a>
                         <p>${subtitle}</p>

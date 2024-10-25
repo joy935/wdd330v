@@ -37,7 +37,7 @@ function displayWishlist(wishlistItems) {
         return bookList.innerHTML +=`
             <div class="book">
                 <a href="../book/index.html?id=${book}">
-                    <img class="thumbnail" src="${image}" alt="${title}" width="128" height="179">
+                    <img class="thumbnail" src="${image}" alt="${title}" width="128" height="179" loading="lazy">
                     <h2>${title}</h2>
                 </a>
                 <p class="author">${authors}</p>
