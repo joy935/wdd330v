@@ -46,7 +46,7 @@ h1 {
     font-size: 1.2rem;
 }
 .navBox a:hover {
-    color: var(--secondary-color);
+    color: var(--accent1-color);
 }
 .logo img {
     width: 100px;
@@ -56,9 +56,7 @@ h1 {
     background-color: var(--primary-color);
     color: black;
     padding: 20px 10px;
-
 }
-
 /* homepage */
 .mainBox {
     align-items: center;
@@ -69,16 +67,18 @@ h1 {
 }
 .searchBox {
     padding: 1rem;
+    background-color: var(--accent1-color);
+    border-radius: 5px;
 }
 #searchForm {
     justify-content: center;
     text-align: center;
-    gap: 1rem;
+    
 }
 #search {
     padding: 0.5rem;
     font-size: 1rem;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 button {
     padding: 0.5rem;
@@ -311,8 +311,5 @@ form button:hover {
         position: absolute;
         left: 30%;
         top: 50%;
-        background-color: var(--accent1-color);
     }
-
-    
 }
