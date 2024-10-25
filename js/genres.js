@@ -3,7 +3,7 @@ import { loadHeaderFooter, formatDate } from "./utils.mjs";
 loadHeaderFooter();
 
 const books = document.querySelector(".bookList");
-
+const pagination = document.getElementById("pagination");
 const maxResults = 12;
 let currentPage = 0;
 let currentGenre = "";
@@ -16,9 +16,10 @@ genres.forEach(genre => {
         // get the ID of the clicked genre
         currentGenre = event.target.id;
         event.target.classList.add("selected");
+
         // get the books by genre
         getBooksByGenre(currentGenre, 0);
-
+        pagination.style.display = "block";
     });
 });
 
@@ -80,5 +81,7 @@ function changePage(direction) {
     if (startIndex >= 0 && startIndex < totalItems) {
         currentPage = newPage;
         getBooksByGenre(currentGenre, startIndex);
+        const pagination = document.getElementById("pagination");
+        pagination.style.display = "block";
     }
 }
