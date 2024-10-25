@@ -68,13 +68,13 @@ async function renderBooks(data) {
             <div class="book">
                 <div class="book1">
                 <a href="../book/index.html?id=${book.id}">
-                    <img src="${image}" alt="${title}">
-                </a>
+                    <img class="thumbnail" src="${image}" alt="${title}" width="128" height="179" loading="lazy"></a>
                 </div>
                 <div class="book2">
-                    <h2>${title}</h2>
-                    <p>By ${authors}</p>
-                    <p>Published: ${publishedDate}</p>
+                <a href="../book/index.html?id=${book.id}">
+                    <h2>${title}</h2></a>
+                <p class="author">${authors}</p>
+                <p>Publication date: ${publishedDate}</p>
                 </div>
             </div>
         `;
