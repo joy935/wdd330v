@@ -15,6 +15,15 @@ document.addEventListener("DOMContentLoaded", function() {
     if (search) {
         getBooks(search, 0);
     }
+    // if the user sort by relevance or newest, get the first page of results
+    const select = document.getElementById("sortSelect");
+    select.onchange = function() {
+        const value = select.value;
+        if (value === "relevance" || value === "newest") {
+            getBooks(search, 0, value);
+        }
+    }
+
     // if the user clicks the next or previous button, change the page accordingly
     document.getElementById("nextBtn").addEventListener("click", function() { changePage(1) });
     document.getElementById("prevBtn").addEventListener("click", function() { changePage(-1) });
@@ -25,9 +34,9 @@ const books = document.querySelector(".bookList");
 const googleBooksApiUrl = "https://www.googleapis.com";
 const googleBooksApiKey = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
 
-async function getBooks(search, startIndex) {
+async function getBooks(search, startIndex, sort = "relevance") {
     try {
-        const response = await fetch(`${googleBooksApiUrl}/books/v1/volumes?q=${search}&startIndex=${startIndex}&maxResults=${maxResults}&key=${googleBooksApiKey}`);
+        const response = await fetch(`${googleBooksApiUrl}/books/v1/volumes?q=${search}&startIndex=${startIndex}&maxResults=${maxResults}&orderBy=${sort}&key=${googleBooksApiKey}`);
         const data = await response.json();
         totalItems = data.totalItems;
         currentSearch = search;

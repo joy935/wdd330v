@@ -122,7 +122,15 @@ hr {
     border-top: 1px solid var(--primary-color);
 }
 #pageInfo {margin-top: .4rem;}
-
+#sort {
+    margin-left: 1rem;
+}
+#sortSelect {
+    padding: .5rem;
+    font-size: 1rem;
+    border-radius: 3px;
+    background-color: var(--accent1-color);
+}
 /* INSPIRE: get inspired books */
 /* similar to BOOKS: search results */
 
