@@ -4,13 +4,26 @@ loadHeaderFooter();
 
 const books = document.querySelector(".bookList");
 const pagination = document.getElementById("pagination");
+
 const maxResults = 12;
 let currentPage = 0;
 let currentGenre = "";
 let totalItems = 0;
+
+// when the page is loaded, check if the user has selected a genre
+// from the details page
+document.addEventListener("DOMContentLoaded", () => {
+    const genreFromLS = localStorage.getItem("selectedCategory");
+    if (genreFromLS) {
+        currentGenre = genreFromLS;
+        getBooksByGenre(currentGenre, 0);
+        localStorage.removeItem("selectedCategory"); // remove the genre from local storage
+        pagination.style.display = "block";
+    } 
+});
+
 // select all elements with the class genre
 const genres = document.querySelectorAll(".genre");
-
 genres.forEach(genre => {
     genre.addEventListener("click", (event) => {
         // get the ID of the clicked genre
@@ -22,7 +35,6 @@ genres.forEach(genre => {
         pagination.style.display = "block";
     });
 });
-
 
 // if the user clicks the next or previous button, change the page accordingly
 document.getElementById("nextBtn").addEventListener("click", function() { changePage(1) });

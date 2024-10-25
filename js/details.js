@@ -19,6 +19,21 @@ document.addEventListener("DOMContentLoaded", function() {
             const response = await fetch(`${googleBooksApiUrl}/books/v1/volumes/${id}?key=${googleBooksApiKey}`);
             const data = await response.json();
             renderBook(data);
+        
+            // event listener to select a category
+        const categories = document.querySelectorAll(".genres");
+        categories.forEach(category => {
+            category.addEventListener("click", (event) => {
+                if (event.target.classList.contains("genres")) {
+                    event.preventDefault();
+                    const selectedCategory = event.target.id.trim();
+                    // store the selected category in local storage
+                    localStorage.setItem("selectedCategory", selectedCategory);
+                    window.location.href = event.target.href; // redirect to the genres page
+                }});
+                
+        });
+        
         } catch (error) {
             console.error(error); // eslint-disable-line no-console
         }
@@ -37,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alertMessage("Please log in to add books to your wishlist.");
         }});
 });
+
 
 
 

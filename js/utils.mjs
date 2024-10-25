@@ -37,7 +37,10 @@ export function formatCategories(categories) {
     if (!categories || categories.length === 0) {
       return "No categories available";
     } else {
-        return categories.split("/").join("| ");
+        return categories
+          .split("/")
+          .map((category) => `<a id=${category} class="genres" href="../genres/index.html">${category}</a>`)
+          .join("| ");
     }
 }
 
