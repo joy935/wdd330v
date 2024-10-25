@@ -80,6 +80,9 @@ h1 {
     font-size: 1rem;
     border-radius: 5px;
 }
+#searchBtn {
+    margin-top: 0;
+}
 button {
     padding: 0.5rem;
     font-size: 1rem;
