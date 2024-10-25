@@ -9,7 +9,7 @@ const sameAuthorBtn = document.querySelector(".sameAuthorBtn");
 const googleBooksApiUrl = "https://www.googleapis.com";
 const googleBooksApiKey = "AIzaSyD0ESRed2KpWg351u_7MGA70O2jZIgvXb4";
 
-document.addEventListener("DOMContentLoaded", function() {å
+document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
