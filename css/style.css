@@ -257,6 +257,23 @@ form button:hover {
 /* WISHLIST: user wishlist */
 /* similar to BOOKS: search results */
 
+/* GENRES: book genres */
+/* similar to BOOKS: search results */
+.genreBox {
+    display: block;
+    text-align: center;
+}
+.genre {
+    margin: .5rem;
+    padding: .5rem;
+    background-color: var(--accent1-color);
+    border-radius: 5px;
+}
+.genre.selected {
+    background-color: var(--accent2-color);
+    color: white;
+}
+
 
 /* media queries */
 @media screen and (min-width: 500px) {
@@ -311,5 +328,14 @@ form button:hover {
         position: absolute;
         left: 30%;
         top: 50%;
+    }.genreBox {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
     }
+    .genreBox {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
 }
