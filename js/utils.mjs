@@ -72,7 +72,7 @@ export function formatCategories(categories) {
 }
 
 export function formatBuyLink(buyLink) {
-    if (buyLink === "No buy link available") {
+    if (buyLink === "undefined" || !buyLink) {
         return `<p>No buy link available</p>`;
     } else {
         return `<p><a href="${buyLink}" target="_blank">Buy this book</a></p>`;
