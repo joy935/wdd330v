@@ -13,9 +13,36 @@ export async function loadHeaderFooter() {
     const footer = await loadTemplate("../public/partials/footer.html");
     const getHeader = document.getElementById("header");
     const getFooter = document.getElementById("footer");
-
+    
     renderWithTemplate(header, getHeader);
     renderWithTemplate(footer, getFooter);
+    
+    updateLogInLink();
+}
+
+export function updateLogInLink() {
+  let dynamicNav = document.getElementById("loginLink");
+  let isLoggedIn = localStorage.getItem("isLoggedIn");
+  let isRegistered = localStorage.getItem("isRegistered");
+  let users = JSON.parse(localStorage.getItem("users"));
+
+  if (dynamicNav) {
+    if (isLoggedIn) {
+        dynamicNav.innerHTML = "My Account"
+        dynamicNav.href = "../account/index.html"
+    } else if (users) {
+        dynamicNav.innerHTML = "Log In"
+        dynamicNav.href = "../login/index.html"
+    } else if (isRegistered) {
+        dynamicNav.innerHTML = "Log In"
+        dynamicNav.href = "../login/index.html"
+    } else {
+        dynamicNav.innerHTML = "Register"
+        dynamicNav.href = "../register/index.html"
+    }
+  } else {
+    console.log("No dynamicNav element found");
+  }
 }
 
 export function formatDate(publishedDate) {
