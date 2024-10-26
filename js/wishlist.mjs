@@ -24,7 +24,7 @@ import { alertMessage } from "./utils.mjs";
         if (!this.isInWishlist(id)) {
             this.wishlist.push(id);
             this.saveWishlist();
-            alertMessage("Book added to the wishlist");
+            alertMessage("Book added to the wishlist", true, "success");
         } else {
             alertMessage("Book is already in the wishlist");
         }

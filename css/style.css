@@ -169,6 +169,10 @@ hr {
 #addToWishlistBtn:hover {
     animation: myanimation 2s;
 }
+.alertSuccess {
+    background-color: rgb(201, 245, 201) !important;
+    position: relative;
+}
 #wishlistIcon.shake{
     animation: myanimation 0.5s;
 }

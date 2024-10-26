@@ -79,9 +79,12 @@ export function formatBuyLink(buyLink) {
     }
 }
 
-export function alertMessage(message, scroll=true) {
+export function alertMessage(message, scroll=true, type="default") {
     const alert = document.createElement("div");
+
     alert.classList.add("alert");
+    alert.classList.add(type === "success" ? "alertSuccess" : "alertDefault");
+
     // set the contents of the alert
     alert.innerHTML = `<p>${message}</p>
     <button class="close-alert">❌</button>`;
