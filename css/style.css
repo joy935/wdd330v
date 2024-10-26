@@ -140,7 +140,9 @@ hr {
 }
 /* INSPIRE: get inspired books */
 /* similar to BOOKS: search results */
-
+.inspireBox {
+    margin-left: 1rem;
+}
 /* BOOK: book details */
 .bookDetails {
     margin: 1rem;
