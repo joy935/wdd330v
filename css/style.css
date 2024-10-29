@@ -297,6 +297,10 @@ form button:hover {
     background-color: var(--accent1-color);
     border-radius: 5px;
 }
+.genre:hover {
+    background-color: var(--accent2-color);
+    color: white;
+}
 .genre.selected {
     background-color: var(--accent2-color);
     color: white;
