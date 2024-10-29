@@ -67,7 +67,7 @@ export function formatCategories(categories) {
         return categories
           .split("/")
           .map((category) => `<a id=${category} class="genres" href="../genres/index.html">${category}</a>`)
-          .join("| ");
+          .join(" ");
     }
 }
 

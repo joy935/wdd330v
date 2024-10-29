@@ -84,6 +84,10 @@ h1 {
 #searchBtn {
     margin-top: 0;
 }
+#searchBtn:hover {
+    background-color: var(--primary-color);
+    color: black;
+}
 button {
     padding: 0.5rem;
     font-size: 1rem;
@@ -161,6 +165,20 @@ hr {
     border: 1px solid var(--primary-color);
     padding: .5rem;
     border-radius: 2px;
+}
+.genres {
+    text-decoration: none;
+    background-color: var(--accent1-color);
+    padding: .2rem;
+    border-radius: 3px;
+    margin: .2rem;
+}
+.genres:hover {
+    background-color: var(--accent2-color);
+    color: white;
+}
+.categories {
+    margin-bottom: .5rem;
 }
 #addToWishlistBtn {
     margin-top: 1rem;
